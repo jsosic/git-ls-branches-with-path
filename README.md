@@ -8,6 +8,10 @@ the specified path
 Prints the list of all the branches that contain modified files within the
 designated path.
 
+Script expects the local working copy to be up to date, so it is suggested
+to run `git fetch --prune` and checkout latest master branch to get the
+relevant rsults.
+
 ## Installation
 
 Copy the `git-ls-branches-with-path` file anywhere inside your path,

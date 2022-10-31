@@ -12,13 +12,9 @@ fi
 
 echo "Searching for path: \"${PATHNAME}\" in remote branches."
 
-git fetch --prune >/dev/null 2>/dev/null
-git checkout master >/dev/null 2>/dev/null
-git pull --rebase >/dev/null 2>/dev/null
-
 # search for file
 BRANCHES=$(git for-each-ref --format="%(refname:short)" | grep -v master | while read branch; do
-  git cherry master $branch | while read x head; do 
+  git cherry origin/master $branch | while read x head; do
     if [ "$(git log -n 1 --format=%H $head -- $PATHNAME)" = "$head" ]; then echo $branch; fi;
   done;
 done | sort -u | xargs echo -n)
